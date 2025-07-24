@@ -221,7 +221,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 **Project Author**: [Guhan.N]  
 **GitHub**: [@Guhan-N](https://github.com/Guhan-N)  
 **Live Demo**: [https://your-username.github.io/epicflix](https://your-username.github.io/epicflix)  
-**Email**: your.email@example.com
+**Email**: guhan6575@gmail.com
 
 ---
 
