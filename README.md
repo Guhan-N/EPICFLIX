@@ -1,5 +1,6 @@
 # 🎬 EPICFLIX
-<img width="1856" height="878" alt="EPICFLIX Screenshot" src="https://github.com/user-attachments/assets/820a6da6-e863-4d45-952a-c3d3a2848402" />
+<img width="1895" height="901" alt="image" src="https://github.com/user-attachments/assets/2ae4c593-5db6-44ff-9ad8-541ca1f50cf8" />
+
 
 ## 📚 Table of Contents
 
