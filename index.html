@@ -1,0 +1,183 @@
+<!-- trigger build  -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EPICFLIX</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script type="importmap">
+    {
+        "imports": {
+            "@supabase/supabase-js": "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm"
+        }
+    }
+    </script>
+</head>
+<body data-theme="dark">
+    <header>
+        <nav>
+            <div class="nav-left">
+                <button id="mobile-menu-toggle" aria-label="Toggle menu">☰</button>
+                <h1>EPICFLIX</h1>
+            </div>
+            <div class="nav-links desktop-nav" id="desktop-menu">
+                <a href="#" class="active" id="home">Home</a>
+                <a href="#" id="movies">Movies</a>
+                <a href="#" id="tvshows">TV Shows</a>
+                <a href="#" id="anime">Anime</a>
+                <a href="#" id="profile">Profile</a>
+            </div>
+            <div class="nav-right">
+                <div class="auth-section">
+                    <div class="auth-container">
+                        <button class="auth-btn" onclick="document.getElementById('login-modal').style.display='block'">Login</button>
+                        <button class="auth-btn" onclick="document.getElementById('signup-modal').style.display='block'">Sign Up</button>
+                    </div>
+                    <div class="user-info" style="display: none;">
+                        <span class="user-email"></span>
+                        <button class="auth-btn" onclick="handleLogout()">Logout</button>
+                    </div>
+                </div>
+                <button id="theme-toggle"></button>
+            </div>
+        </nav>
+        <div class="search-container desktop-search">
+            <input type="text" id="search" placeholder="Search for movies and TV shows...">
+            <select id="content-type">
+                <option value="all">All</option>
+                <option value="movie">Movies</option>
+                <option value="tv">TV Shows</option>
+            </select>
+            <select id="genre-select">
+                <option value="">All Genres</option>
+            </select>
+        </div>
+    </header>
+
+    <!-- Mobile Sidebar Menu -->
+    <div id="mobile-sidebar-menu" class="mobile-sidebar-menu-overlay">
+        <div class="mobile-menu" id="mobile-menu">
+            <div class="mobile-menu-header">
+                <h2>EPICFLIX</h2>
+                <button class="close-mobile-menu">✕</button>
+            </div>
+            
+            <div class="mobile-search-container">
+                <input type="text" id="mobile-search" placeholder="Search for movies and TV shows...">
+                <select id="mobile-content-type">
+                    <option value="all">All</option>
+                    <option value="movie">Movies</option>
+                    <option value="tv">TV Shows</option>
+                </select>
+                <select id="mobile-genre-select">
+                    <option value="">All Genres</option>
+                </select>
+            </div>
+
+            <div class="mobile-nav-links">
+                <a href="#" class="mobile-nav-link active" data-page="home">
+                    <span class="nav-icon">🏠</span>
+                    <span>Home</span>
+                </a>
+                <a href="#" class="mobile-nav-link" data-page="movies">
+                    <span class="nav-icon">🎬</span>
+                    <span>Movies</span>
+                </a>
+                <a href="#" class="mobile-nav-link" data-page="tvshows">
+                    <span class="nav-icon">📺</span>
+                    <span>TV Shows</span>
+                </a>
+                <a href="#" class="mobile-nav-link" data-page="anime">
+                    <span class="nav-icon">🎌</span>
+                    <span>Anime</span>
+                </a>
+                <a href="#" class="mobile-nav-link" data-page="profile">
+                    <span class="nav-icon">👤</span>
+                    <span>Profile</span>
+                </a>
+            </div>
+
+            <div class="mobile-auth">
+                <div class="mobile-auth-buttons">
+                    <button class="mobile-auth-btn login-btn" onclick="document.getElementById('login-modal').style.display='block'">
+                        <span class="auth-icon">👤</span>
+                        <span>Login</span>
+                    </button>
+                    <button class="mobile-auth-btn signup-btn" onclick="document.getElementById('signup-modal').style.display='block'">
+                        <span class="auth-icon">📝</span>
+                        <span>Sign Up</span>
+                    </button>
+                </div>
+                <div class="mobile-user-info" style="display: none;">
+                    <div class="user-profile">
+                        <span class="user-avatar">👤</span>
+                        <span class="mobile-user-email"></span>
+                    </div>
+                    <button class="mobile-auth-btn logout-btn" onclick="handleLogout()">
+                        <span class="auth-icon">🚪</span>
+                        <span>Logout</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="document.getElementById('login-modal').style.display='none'">&times;</span>
+            <h2>Login</h2>
+            <form onsubmit="handleLogin(event)">
+                <input type="email" id="login-email" placeholder="Email" required>
+                <input type="password" id="login-password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div id="signup-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="document.getElementById('signup-modal').style.display='none'">&times;</span>
+            <h2>Sign Up</h2>
+            <form onsubmit="handleSignup(event)">
+                <input type="email" id="signup-email" placeholder="Email" required>
+                <input type="password" id="signup-password" placeholder="Password" required minlength="6">
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+    <main id="main">
+        <div class="hero-section">
+            <div class="slider-container">
+                <div class="slider-wrapper" id="hero-slider">
+                    <!-- Slides will be populated by JavaScript -->
+                </div>
+                <button class="slider-btn prev-btn" id="prev-btn">❮</button>
+                <button class="slider-btn next-btn" id="next-btn">❯</button>
+                <div class="slider-dots" id="slider-dots"></div>
+            </div>
+        </div>
+        <div class="content-section">
+            <h2>Trending Now</h2>
+            <div class="movies-grid" id="trending-grid"></div>
+            
+            <h2>Popular Movies</h2>
+            <div class="movies-grid" id="movies-grid"></div>
+            
+            <h2>Popular TV Shows</h2>
+            <div class="movies-grid" id="tvshows-grid"></div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <script type="module" src="script.js"></script>
+    
+    <!-- Alert Container -->
+    <div id="alert-container"></div>
+</body>
+</html>
