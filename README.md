@@ -1,7 +1,6 @@
 # 🎬 EPICFLIX
 <img width="1895" height="901" alt="image" src="https://github.com/user-attachments/assets/2ae4c593-5db6-44ff-9ad8-541ca1f50cf8" />
 
-
 ## 📚 Table of Contents
 
 * [About The Project](#about-the-project)
@@ -9,11 +8,11 @@
 * [Technologies Used](#technologies-used)
 * [Database Schema](#database-schema)
 * [Getting Started](#getting-started)
-
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
   * [Environment Variables](#environment-variables)
   * [Running the Project](#running-the-project)
+* [Ad-Free Viewing Suggestion](#ad-free-viewing-suggestion)
 * [Contributing](#contributing)
 * [License](#license)
 * [Contact](#contact)
@@ -85,7 +84,6 @@
 ### Backend & Database
 
 * [Supabase](https://supabase.com/)
-
   * PostgreSQL database
   * Authentication
   * Row Level Security (RLS)
@@ -183,6 +181,18 @@ Visit `http://localhost:3000` (or your chosen port) to view the app.
 
 ---
 
+## 🧼 Ad-Free Viewing Suggestion
+
+To ensure a smoother, distraction-free experience while browsing or watching trailers (which may come from external platforms like YouTube), we recommend:
+
+- 🛡️ Installing an ad blocker extension such as **[uBlock Origin](https://ublockorigin.com/)**
+- 🦁 Or using a privacy-focused browser like **[Brave](https://brave.com/)**
+
+> EPICFLIX does **not serve ads**, but external links (e.g., trailers from YouTube or embeds from TMDB) may show ads.  
+> Using the above tools ensures a cleaner viewing experience.
+
+---
+
 ## 🤝 Contributing
 
 Contributions are welcome! Here's how you can help improve EPICFLIX:
@@ -237,5 +247,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 > **Thanks for checking out EPICFLIX!** ⭐ If you find this project helpful, please consider giving it a star on GitHub and sharing it with others who might enjoy it!
 
 ---
-
-*Made with ❤️ for movie and TV show enthusiasts everywhere*
