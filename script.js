@@ -221,13 +221,6 @@ async function handleSignup(e) {
 
     // Sign out immediately to prevent auto-login
     await supabase.auth.signOut();
-
-    alert("Signup successful! Please check your email to confirm.");
-  } catch (error) {
-    alert(error.message);
-  }
-}
-
     
     showAlert('success', 'Account Created!', 'Please check your email for the confirmation link, then log in.');
     document.getElementById('signup-modal').style.display = 'none';
