@@ -214,10 +214,8 @@ async function handleSignup(e) {
   try {
     const { data, error } = await supabase.auth.signUp({
       email,
-      password,
-      options: {
-        emailRedirectTo: 'https://guhan-n.github.io/EPICFLIX/'
-      }
+      password
+      
     });
     
     if (error) throw error;
