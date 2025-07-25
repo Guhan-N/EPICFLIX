@@ -249,7 +249,10 @@ async function handleLogin(e) {
   try {
     const { data, error } = await supabase.auth.signInWithPassword({
       email,
-      password
+      password,
+      options: {
+        emailRedirectTo: 'https://guhan-n.github.io/EPICFLIX/'
+      }
     });
     
     if (error) throw error;
