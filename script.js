@@ -214,13 +214,23 @@ async function handleSignup(e) {
   try {
     const { data, error } = await supabase.auth.signUp({
       email,
-      password
+      password,
+      options: {
+        emailRedirectTo: 'https://guhan-n.github.io/EPICFLIX/'
+      }
     });
     
     if (error) throw error;
-    
+
     // Sign out immediately to prevent auto-login
     await supabase.auth.signOut();
+
+    alert("Signup successful! Please check your email to confirm.");
+  } catch (error) {
+    alert(error.message);
+  }
+}
+
     
     showAlert('success', 'Account Created!', 'Please check your email for the confirmation link, then log in.');
     document.getElementById('signup-modal').style.display = 'none';
