@@ -230,7 +230,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Project Author**: [Guhan.N]  
 **GitHub**: [@Guhan-N](https://github.com/Guhan-N)  
-**Live Demo**: [https://guhan-n.github.io/EPICFLIX/](https://guhan-n.github.io/EPICFLIX/)  
+**Live Demo**: [https://epicflix007.netlify.app/](https://epicflix007.netlify.app/)  
 **Email**: guhan6575@gmail.com
 
 ---
