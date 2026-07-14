@@ -8,7 +8,7 @@ export const supabase = createClient(supabaseUrl, supabaseKey);
 
 // TMDB API Configuration
 const API_KEY = tmdbApiKey;
-const TMDB_READ_ACCESS_TOKEN = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0NDk4MzEwMWJjMmU4ODIxZTNhMjBjNjFhOWRmN2E0YSIsIm5iZiI6MTc1MzE3OTkzNi44NzgsInN1YiI6IjY4N2Y2NzIwZmQ5NDU1MzFlZThhNTMyZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.KPOxOvKG-Qxx7pguBfFSfhN9fDlevJRRtI3QB3y4KZ0';
+const TMDB_READ_ACCESS_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFldnFrbWZwYnd5ZWZwY2lnZHVuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQwMzU5NDksImV4cCI6MjA5OTYxMTk0OX0.1sSzyxCAXhSCeH4daANEkLXGa3Xom5sUhQhsy_Pw6Z0';
 const API_BASE_URL = 'https://api.themoviedb.org/3';
 const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500';
 const BACKDROP_BASE_URL = 'https://image.tmdb.org/t/p/original';
