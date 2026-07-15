@@ -488,12 +488,11 @@ async function showActorDetails(actorId) {
 
 // Show details function with VidSrc streaming
 async function showDetails(id, type) {
-    const [details, credits, videos, externalIds] = await Promise.all([
-        fetchContent(`/${type}/${id}`),
-        fetchContent(`/${type}/${id}/credits`),
-        fetchContent(`/${type}/${id}/videos`),
-        fetchContent(`/${type}/${id}/external_ids`)
-    ]);
+    const [details, credits, videos] = await Promise.all([
+    fetchContent(`/${type}/${id}`),
+    fetchContent(`/${type}/${id}/credits`),
+    fetchContent(`/${type}/${id}/videos`)
+]);
     
     if (!details || !credits) return;
 
@@ -509,22 +508,16 @@ async function showDetails(id, type) {
         video.type === 'Trailer' && video.site === 'YouTube'
     );
 
-    // Get IMDb ID for streaming
-    const imdbId = externalIds?.imdb_id;
-    
-    // Construct VidSrc URL based on content type
-    const getVidsrcUrl = (season = null, episode = null) => {
-        if (!imdbId) return null;
-        if (type === 'movie') {
-            return `https://vidsrc.icu/embed/movie/${imdbId}`;
-        } else {
-            const s = season || 1;
-            const e = episode || 1;
-            return `https://vidsrc.icu/embed/tv/${imdbId}/${s}/${e}`;
-        }
-    };
-    
-    const initialVidsrcUrl = getVidsrcUrl();
+   // Streaming URL using TMDB ID
+const getStreamingUrl = (season = 1, episode = 1) => {
+    if (type === 'movie') {
+        return `https://vidsrc.sbs/embed/movie/${id}`;
+    } else {
+        return `https://vidsrc.sbs/embed/tv/${id}/${season}/${episode}`;
+    }
+};
+
+const initialVidsrcUrl = getStreamingUrl();
 
     main.innerHTML = `
         <div class="details-container">
@@ -680,7 +673,7 @@ async function showDetails(id, type) {
                     });
                     
                     // Update video source to first episode of the season
-                    const newUrl = getVidsrcUrl(seasonNumber, 1);
+                    const newUrl = getStreamingUrl(seasonNumber, 1);
                     if (newUrl) {
                         updateVideoSource(newUrl);
                     }
@@ -705,7 +698,7 @@ async function showDetails(id, type) {
         episodeSelect.addEventListener('change', () => {
             const selectedSeason = parseInt(seasonSelect.value);
             const selectedEpisode = parseInt(episodeSelect.value);
-            const newUrl = getVidsrcUrl(selectedSeason, selectedEpisode);
+            const newUrl = getStreamingUrl(selectedSeason, selectedEpisode);
             if (newUrl) {
                 updateVideoSource(newUrl);
             }
@@ -791,9 +784,9 @@ async function showDetails(id, type) {
                 const episodeSelect = document.getElementById('episode-select');
                 const selectedSeason = seasonSelect ? parseInt(seasonSelect.value) : 1;
                 const selectedEpisode = episodeSelect ? parseInt(episodeSelect.value) : 1;
-                contentUrl = getVidsrcUrl(selectedSeason, selectedEpisode);
+                contentUrl = getStreamingUrl(selectedSeason, selectedEpisode);
             } else {
-                contentUrl = getVidsrcUrl();
+                contentUrl = getStreamingUrl();
             }
             
             if (contentUrl) {
